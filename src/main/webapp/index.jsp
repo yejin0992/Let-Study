@@ -596,69 +596,6 @@
 
                             <div class="col-12"></div>
                         </div>
-                        <div class="row">
-                            <div class="col-12 joongo">
-                                <div class="row 중고책1">
-                                    <div class="col-1 col-sm-2"></div>
-                                    <div class="col-10 col-sm-8">
-                                        <div class="row 중고책2">
-                                            <div class="col-12"></div>
-                                            <div class="col-12">
-                                                <a onclick="javascript:checkLogin('/selectBound.secondHand');">중고책</a>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="row">
-                                                    <div class="col-1 col-xl-2" style="padding:0px;"></div>
-                                                    <div class="col-10 col-xl-8">
-                                                        <div class="row" id="joong">
-
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-1 col-xl-2" style="padding:0px;"></div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-1 col-sm-2"></div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="row 중고책">
-                                    <div class="col-1 col-sm-2"></div>
-                                    <div class="col-10 col-sm-8">
-                                        <div class="row 사진">
-                                            <div class="col-12"></div>
-                                            <div class="col-12 col-sm-6">
-                                                <div class="col">
-                                                    <div class="card">
-                                                        <img src="..." class="card-img-top" alt="..." height="200px">
-                                                        <div class="card-body">
-                                                            <h5 class="card-title">LET'STUDY란?</h5>
-                                                            <p class="card-text">LET'STUDY가 무슨 의미를 할까요?</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-sm-6">
-                                                <div class="col">
-                                                    <div class="card">
-                                                        <img src="..." class="card-img-top" alt="..." height="200px">
-                                                        <div class="card-body">
-                                                            <h5 class="card-title">LET'STUDY가 만들어진 이유</h5>
-                                                            <p class="card-text">이유</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-12"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-1 col-sm-2"></div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <div class="col-1 col-sm-2"></div>
                     <!-- 풋터 -->

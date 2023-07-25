@@ -32,7 +32,6 @@ public class FreeBoardController extends HttpServlet {
 		request.setCharacterEncoding("utf8");
 		response.setContentType("text/html; charset=utf8");
 		String cmd=request.getRequestURI();
-
 		FreeBoardDAO dao = FreeBoardDAO.getInstance();
 		String writer = (String)request.getSession().getAttribute("loggedID");
 		String nickname = (String)request.getSession().getAttribute("loggedNickname");
@@ -41,11 +40,9 @@ public class FreeBoardController extends HttpServlet {
 			if(cmd.equals("/write.freeBoard")) {
 				String title = request.getParameter("title");
 				String contents= request.getParameter("contents");
-				title = EncryptionUtils.AntiXSS(title);
-				contents = EncryptionUtils.AntiXSS(contents);
-			
 				int result = dao.insert(writer, title, contents);
 				response.sendRedirect("/contentList.freeBoard");
+				
 			// 자유게시판 목록 리스트 보기			
 			}else if(cmd.equals("/contentList.freeBoard")) {
 				int currentPage = request.getParameter("cpage") == null ? 1 : Integer.parseInt(request.getParameter("cpage"));
@@ -67,9 +64,9 @@ public class FreeBoardController extends HttpServlet {
 				request.setAttribute("end", last);
 				request.getRequestDispatcher("/freeBoard/FreeBoardList.jsp").forward(request, response);
 			}
+			
 			// 게시글 디테일 뷰
 			else if(cmd.equals("/detail.freeBoard")) {
-				
 				// 게시글 시퀀스 받아오기
 				int seq = Integer.parseInt(request.getParameter("seq"));
 				System.out.println("게시글 시퀀스 : "+seq);
@@ -82,15 +79,13 @@ public class FreeBoardController extends HttpServlet {
 				String nick = dao.getNicknameBySeq(seq);
 				System.out.println(nick);
 				request.setAttribute("nickname", nick);
-				
 				// 댓글 출력
 				FreeReplyDAO daoRP = FreeReplyDAO.getInstance();
 				List<ReplyAndMemberDTO> replyResult = daoRP.selectReply(seq);
 				request.setAttribute("replyResult", replyResult);
 				request.getRequestDispatcher("/freeBoard/FreeBoardContents.jsp").forward(request, response);
 				
-				
-				// 게시글 업데이트
+			// 게시글 업데이트
 			}else if(cmd.equals("/update.freeBoard")) {
 				int seq = Integer.parseInt(request.getParameter("seq"));
 				String title = request.getParameter("title");
@@ -103,6 +98,7 @@ public class FreeBoardController extends HttpServlet {
 				int seq = Integer.parseInt(request.getParameter("seq"));
 				int result = dao.deleteBySeq(seq);
 				response.sendRedirect("/contentList.freeBoard");
+				
 			// 자유게시판 검색	
 			}else if(cmd.equals("/searchByOption.freeBoard")) {
 				int currentPage = request.getParameter("cpage") == null ? 1 : Integer.parseInt(request.getParameter("cpage"));
@@ -127,8 +123,7 @@ public class FreeBoardController extends HttpServlet {
 				request.getRequestDispatcher("/freeBoard/FreeBoardList.jsp").forward(request, response);
 				}
 			
-			
-			
+			// 자유게시판 글쓰기
 			else if(cmd.equals("/insertFile.freeBoard")) {
 					JsonObject jo = new JsonObject();
 					Gson g = new Gson();
@@ -155,10 +150,8 @@ public class FreeBoardController extends HttpServlet {
 							System.out.println("oriName : "+oriName);
 							String sysName = multi.getFilesystemName(name);
 							System.out.println("sysName : "+sysName);
-							String url = "/img/"+sysName;
+							String url = "/freeImg/"+sysName;
 							System.out.println("url : "+url);
-//							jo.addProperty("url", url);
-//							System.out.println(jo.toString());
 							response.getWriter().append(g.toJson(url));
 						}
 					}
